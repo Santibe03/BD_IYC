@@ -15,9 +15,8 @@ CREATE TABLE TipDoc (
 );
 
 CREATE TABLE Usuario (
-    idUser VARCHAR(15) PRIMARY KEY,
     idRol TINYINT(3),
-    documento INT(10),
+    documento VARCHAR(10)PRIMARY KEY,
     idTipDoc INT(10),
     nom VARCHAR(30),
     apell VARCHAR(30),
@@ -101,7 +100,7 @@ CREATE TABLE Estado (
 
 CREATE TABLE Reserva (
     Id_Reserva INT(10) AUTO_INCREMENT PRIMARY KEY,
-    idCliente VARCHAR(15),
+    idCliente varchar(15),
     fechaAgenReserva DATE,
     fechaDiaReserva TIMESTAMP,
     numeroPersonas TINYINT(3),
@@ -139,7 +138,7 @@ ALTER TABLE Insumos
     ADD CONSTRAINT fk_insumos_categoria FOREIGN KEY (CategoriaIdCategoria) REFERENCES Categoria(idCategoria);
 
 ALTER TABLE Ingresos
-    ADD CONSTRAINT fk_ingresos_admin FOREIGN KEY (Id_Admin) REFERENCES Usuario(idUser);
+    ADD CONSTRAINT fk_ingresos_admin FOREIGN KEY (Id_Admin) REFERENCES Usuario(documento);
 
 ALTER TABLE IngresosInsumos
     ADD CONSTRAINT fk_ii_ingreso FOREIGN KEY (IngresosIdIngreso) REFERENCES Ingresos(Id_Ingreso),
@@ -150,15 +149,15 @@ ALTER TABLE InsumosProducto
     ADD CONSTRAINT fk_ip_insumo FOREIGN KEY (InsumosIdInsumos) REFERENCES Insumos(idInsumos);
 
 ALTER TABLE Factura
-    ADD CONSTRAINT fk_factura_empleado FOREIGN KEY (idEmpleado) REFERENCES Usuario(idUser),
-    ADD CONSTRAINT fk_factura_cliente FOREIGN KEY (idCliente) REFERENCES Usuario(idUser);
+    ADD CONSTRAINT fk_factura_empleado FOREIGN KEY (idEmpleado) REFERENCES Usuario(documento),
+    ADD CONSTRAINT fk_factura_cliente FOREIGN KEY (idCliente) REFERENCES Usuario(documento);
 
 ALTER TABLE ProductoFactura
     ADD CONSTRAINT fk_pf_producto FOREIGN KEY (ProductoidPro) REFERENCES Producto(idPro),
     ADD CONSTRAINT fk_pf_factura FOREIGN KEY (idFactura) REFERENCES Factura(id_factura);
 
 ALTER TABLE Reserva
-    ADD CONSTRAINT fk_reserva_cliente FOREIGN KEY (idCliente) REFERENCES Usuario(idUser),
+    ADD CONSTRAINT fk_reserva_cliente FOREIGN KEY (idCliente) REFERENCES Usuario(documento),
     ADD CONSTRAINT fk_reserva_estado FOREIGN KEY (idEstado) REFERENCES Estado(idEstado);
 
 ALTER TABLE Reserva_Mesa
