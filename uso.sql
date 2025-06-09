@@ -1,54 +1,70 @@
 -- LLAMAR PROCEDIMIENTOS 
 -- PROCEDIMIENTO 1
-
+-- CALL sp_insert_rol('Administrador');
 
 -- PROCEDIMIENTO 2 
+-- CALL sp_insert_tipodoc('Cédula de ciudadanía');
 
-
--- ACTUALIZAR TELEFONO, CORREO Y DIRRECCION
 -- PROCEDIMIENTO  3
+-- CALL sp_insert_usuario(
+    1,                -- idTipoDoc (ej: Cédula)
+    2,                -- idRol (ej: Cliente)
+    '1234567890',     -- documento
+    'Juan Pérez',     -- nombreUsuario
+    'juan@email.com', -- correo
+    'clave123',       -- clave (en texto plano, se recomienda encriptar)
+    TRUE              -- estado (activo)
+);
 
--- quieres actualizar solo el teléfono y correo, pero dejar la dirección igual:
--- CALL ActualizarUsuario('cliente789', 3101234567, 'nuevo.email@example.com', NULL);
--- Si quieres actualizar solo la dirección:
--- CALL ActualizarUsuario('empleado456', NULL, NULL, 'Nueva Calle 123');
+-- PROCEDIMIENTO  4
+CALL insertarCategoria('Bebidas');
 
--- PROCEDIMIENTO 4
--- CALL EliminarUsuario('cliente789');
+-- PROCEDIMIENTO  5
+CALL insertarInsumo(1, 'Azúcar', 'Montero', 50, 1);
 
--- PROCEDIMIENTO 5
--- CALL AgregarInsumo(1, 'Zanahoria', 'CampoLindo', 10000, 1000);
+-- PROCEDIMIENTO  6
+-- insertar ingresos 
+CALL registrarIngreso(
+    '1234567890',     -- ID del admin
+    CURDATE(),        -- Fecha actual
+    'Compra al proveedor XYZ',
+    1,                -- ID del insumo
+    'Kg',             -- Unidad de medida
+    20                -- Cantidad
+);
 
--- Actualizar el stock 
--- PROCEDIMIENTO 6
--- CALL ActualizarStockInsumo(1, 5000);
--- CALL ActualizarStockInsumo(1, -2000);
+-- PROCEDIMIENTO  7
+-- Ingresar producto
+CALL insertarProductoConInsumos(
+    'Hamburguesa Clásica', 15000, 'img/hamburguesa.png',
+    1, 'g', 200,
+    2, 'ml', 50,
+    3, 'unidad', 1
+);
+
+-- PROCEDIMIENTO  8
+CALL insertarFactura('12345', '67890', 8000, 2);
 
 
--- PROCEDIMIENTO 7
--- CALL RegistrarIngresoInsumo('admin123',CURDATE(),'Ingreso por compra semanal','gramos',3000);
+-- PROCEDIMIENTO  9
+CALL insertarMesa(1, 4);  -- Inserta una mesa disponible con cupo para 4 personas
 
--- PROCEDIMIENTO 8
+-- PROCEDIMIENTO  10
+Copia y pega todo el bloque anterior en una pestaña nueva de tu editor.
 
--- CALL AgregarProducto(
-    -- 'Limonada Natural',
-   -- 7000,
-    -- 'limonada_natural.jpg'
---  );
+Selecciona todo el bloque completo.
 
+Haz clic en “Ejecutar conjunto de instrucciones” (ícono con rayo y hoja) para evitar errores por punto y coma.
 
--- PROCEDIMIENTO 9
--- 1. Eliminar receta actual
-CALL ActualizarRecetaProducto(2);  -- Por ejemplo, para la Hamburguesa
+-- PROCEDIMIENTO  11
+CALL insertarReserva('1234567890', '2025-06-09', '2025-06-10 19:00:00', 4, 1);
 
--- 2. Agregar nueva receta (debes hacer estas llamadas aparte)
-INSERT INTO InsumosProducto (ProductoIdPro, InsumosIdInsumos, UniMedida, Cantidad) VALUES
-(2, 1, 'gramos', 70),
-(2, 2, 'gramos', 50),
-(2, 4, 'gramos', 180);
+-- PROCEDIMIENTO  12
+-- Primero inserta un pedido:
+CALL insertarPedido(2, 1); -- mesa 2, estado 1
 
--- PROCEDIMIENTO 10
-
+-- Luego inserta un producto a ese pedido (sabiendo el ID):
+CALL insertarProductoPedido(1, 3, 2, 15000); -- pedido 1, producto 3, 2 unidades, $15000
 
 
 
