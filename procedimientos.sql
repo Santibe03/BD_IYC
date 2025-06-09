@@ -11,21 +11,26 @@ CREATE PROCEDURE insert_rol (
     IN p_nombreRol VARCHAR(50)
 )
 BEGIN
-    INSERT INTO Rol (nombreRol)
+    INSERT INTO Rol (nomRol)
     VALUES (p_nombreRol);
 END$$
 
 DELIMITER ;
 
 -- PROCEDIMIENTO 2
+USE `proyecto_t`;
+DROP procedure IF EXISTS `sp_insert_tipodoc`;
+
 DELIMITER $$
+USE `proyecto_t`$$
 CREATE PROCEDURE sp_insert_tipodoc (
-    IN p_nombreTipoDoc VARCHAR(50)
+    IN p_nombreTipoDoc varchar(50)
 )
 BEGIN
-    INSERT INTO TipoDoc (nombreTipoDoc)
+    INSERT INTO TipDoc (numDoc)
     VALUES (p_nombreTipoDoc);
-END $$
+END$$
+
 DELIMITER ;
 
 -- PROCEDIMIENTO 3
@@ -36,20 +41,23 @@ DROP procedure IF EXISTS `insert_usuario`;
 DELIMITER $$
 USE `proyecto_t`$$
 CREATE PROCEDURE insert_usuario (
-    IN p_idTipoDoc INT,
-    IN p_idRol INT,
+	IN p_idRol INT,
     IN p_documento VARCHAR(20),
-    IN p_nombreUsuario VARCHAR(100),
+    IN p_idTipoDoc INT,
+    IN p_nom VARCHAR(100),
+    IN p_apell VARCHAR(100),
+    IN p_tel bigint (10),
     IN p_correo VARCHAR(100),
-    IN p_clave VARCHAR(100),
-    IN p_estado BOOLEAN
+    IN p_pass VARCHAR(100),
+    IN p_nacimiento date,
+    IN p_direccion varchar (255)
 )
 BEGIN
-    INSERT INTO Usuario (
-        idTipoDoc, idRol, documento, nombreUsuario, correo, clave, estado
+    INSERT INTO usuario (
+        idRol,documento,idTipDoc, nom, apell,tel, correo, pass, nacimiento, direccion
     )
     VALUES (
-        p_idTipoDoc, p_idRol, p_documento, p_nombreUsuario, p_correo, p_clave, p_estado
+        p_idRol,p_documento, p_idTipoDoc, p_nom, p_apell, p_tel, p_correo, p_pass, p_nacimiento, p_direccion
     );
 END$$
 
