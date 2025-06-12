@@ -312,6 +312,87 @@ END$$
 DELIMITER ;
 
 
+-- Procedimiento: Actualizar Información de Usuario
+-- Permite actualizar los datos personales de un usuario.
+DROP PROCEDURE IF EXISTS actualizarInformacionUsuario;
+DELIMITER $$
+CREATE PROCEDURE actualizarInformacionUsuario(
+    IN p_documento VARCHAR(10),
+    IN p_nom VARCHAR(30),
+    IN p_apell VARCHAR(30),
+    IN p_tel BIGINT(10),
+    IN p_correo VARCHAR(255),
+    IN p_pass VARCHAR(255),
+    IN p_Nacimiento DATE,
+    IN p_direccion VARCHAR(255)
+)
+BEGIN
+    UPDATE Usuario
+    SET
+        nom = p_nom,
+        apell = p_apell,
+        tel = p_tel,
+        correo = p_correo,
+        pass = p_pass,
+        Nacimiento = p_Nacimiento,
+        direccion = p_direccion
+    WHERE documento = p_documento;
+END$$
+DELIMITER ;
+
+CALL actualizarInformacionUsuario(
+   1033162905,'mateo', 'valencia', 3196389023, 'mateovalencia211@gmail.com', 'mateo', '2004-11-22', 'askjgdjasgdj');
+
+select * from usuario;
+
+-- 2. Procedimiento: Actualizar Stock de Insumo
+-- Actualiza el stock de un insumo. p_cantidadCambio puede ser positivo o negativo.
+DROP PROCEDURE IF EXISTS actualizarStockInsumo;
+DELIMITER $$
+CREATE PROCEDURE actualizarStockInsumo(
+    IN p_idInsumos TINYINT,
+    IN p_cantidadCambio INT
+)
+BEGIN
+    -- Se puede añadir una validación para no permitir stock negativo
+    UPDATE Insumos
+    SET Stock = Stock + p_cantidadCambio
+    WHERE idInsumos = p_idInsumos;
+END$$
+DELIMITER ;
+call actualizarStockInsumo (1,5);
+
+select * from insumos;
+
+-- 3. Procedimiento: Actualizar Producto
+-- Permite modificar los detalles de un producto.
+DROP PROCEDURE IF EXISTS actualizarProducto;
+DELIMITER $$
+CREATE PROCEDURE actualizarProducto(
+    IN p_idPro TINYINT,
+    IN p_nomPro VARCHAR(55),
+    IN p_valor INT(10),
+    IN p_imgProdu VARCHAR(255)
+)
+BEGIN
+    UPDATE Producto
+    SET
+        nomPro = p_nomPro,
+        valor = p_valor,
+        imgProdu = p_imgProdu
+    WHERE idPro = p_idPro;
+END$$
+DELIMITER ;
+
+call actualizarProducto (1,'patoloko','10000','asjdnaj');
+
+select * from producto;
+
+
+
+
+
+
 
 
 

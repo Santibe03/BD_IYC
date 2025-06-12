@@ -1,6 +1,6 @@
 -- funciones de la base de datos
 
--- para saber disponibilidad de una mesa 
+-- 1  para saber disponibilidad de una mesa 
 DROP FUNCTION IF EXISTS estaMesaDisponible;
 
 DELIMITER $$
@@ -21,9 +21,9 @@ END$$
 
 DELIMITER ;
 
-SELECT estaMesaDisponible(7); -- Retorna 1 (TRUE) o 0 (FALSE)
+SELECT estaMesaDisponible(8); -- Retorna 1 (TRUE) o 0 (FALSE)
 
--- Función: Saber si una reserva está activa
+-- 2 Función: Saber si una reserva está activa
 
 DROP FUNCTION IF EXISTS estadoReservaPorCliente;
 
@@ -50,9 +50,9 @@ DELIMITER ;
 
 
 
-SELECT estadoReserva(); -- Devuelve: 'Asignada', 'Cancelada', etc.
+SELECT estadoReservaPorCliente(3); -- Devuelve: 'Asignada', 'Cancelada', etc.
 
--- stock de un insumo 
+-- 3 stock de un insumo 
 DROP FUNCTION IF EXISTS infoInsumo;
 
 DELIMITER $$
@@ -73,8 +73,64 @@ BEGIN
 END$$
 
 DELIMITER ;
-SELECT infoInsumo(4);
+SELECT infoInsumo(8);
 -- Devuelve algo como: 'Insumo: Cerveza | Stock restante: 25'
+
+-- 4 Función: Validar Credenciales de Usuario
+-- Retorna el documento del usuario si las credenciales son válidas, de lo contrario NULL.
+DROP FUNCTION IF EXISTS validarCredencialesUsuario;
+DELIMITER $$
+CREATE FUNCTION validarCredencialesUsuario(p_correo VARCHAR(255), p_pass VARCHAR(255))
+RETURNS VARCHAR(10)
+DETERMINISTIC
+BEGIN
+    DECLARE v_documento VARCHAR(10);
+    SELECT documento INTO v_documento
+    FROM Usuario
+    WHERE correo = p_correo AND pass = p_pass;
+    RETURN v_documento;
+END$$
+DELIMITER ;
+select validarCredencialesUsuario();
+
+
+-- 5 Función: Obtener Valor de Producto
+-- Retorna el valor de un producto dado su ID.
+DROP FUNCTION IF EXISTS obtenerValorProducto;
+DELIMITER $$
+CREATE FUNCTION obtenerValorProducto(p_idPro TINYINT)
+RETURNS INT(10)
+DETERMINISTIC
+BEGIN
+    DECLARE v_valor INT(10);
+    SELECT valor INTO v_valor
+    FROM Producto
+    WHERE idPro = p_idPro;
+    RETURN v_valor;
+END$$
+DELIMITER ;
+
+select obtenerValorProducto();
+
+-- 6 Función: Calcular Subtotal de Producto en Factura
+-- Calcula el subtotal para un producto específico basándose en su valor y la cantidad.
+DROP FUNCTION IF EXISTS calcularSubtotalProductoFactura;
+DELIMITER $$
+CREATE FUNCTION calcularSubtotalProductoFactura(p_productoidPro TINYINT, p_cantidad INT)
+RETURNS INT(10)
+DETERMINISTIC
+BEGIN
+    DECLARE v_valor_unitario INT(10);
+    SELECT valor INTO v_valor_unitario
+    FROM Producto
+    WHERE idPro = p_productoidPro;
+    RETURN v_valor_unitario * p_cantidad;
+END$$
+DELIMITER ;
+
+SELECT calcularSubtotalProductoFactura(2, 6);
+
+
 
 
 
