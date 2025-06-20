@@ -1,7 +1,7 @@
 drop database if exists proyecto_t;
 create database proyecto_t;
 use proyecto_t;
-
+-- TABLAS
 -- 1. Tablas
 
 CREATE TABLE Rol (
