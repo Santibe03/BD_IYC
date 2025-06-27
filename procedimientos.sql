@@ -36,32 +36,37 @@ DELIMITER ;
 -- PROCEDIMIENTO 3
 
 USE `proyecto_t`;
-DROP procedure IF EXISTS `insert_usuario`;
+DROP PROCEDURE IF EXISTS `insert_usuario`;
 
 DELIMITER $$
-USE `proyecto_t`$$
 CREATE PROCEDURE insert_usuario (
 	IN p_idRol INT,
     IN p_documento VARCHAR(20),
     IN p_idTipoDoc INT,
     IN p_nom VARCHAR(100),
     IN p_apell VARCHAR(100),
-    IN p_tel bigint (10),
+    IN p_tel BIGINT(10),
     IN p_correo VARCHAR(100),
     IN p_pass VARCHAR(100),
-    IN p_nacimiento date,
-    IN p_direccion varchar (255)
+    IN p_nacimiento DATE,
+    IN p_direccion VARCHAR(255),
+    IN p_aes_key VARBINARY(32) 
 )
 BEGIN
-    INSERT INTO usuario (
-        idRol,documento,idTipDoc, nom, apell,tel, correo, pass, nacimiento, direccion
+    INSERT INTO Usuario (
+        idRol, documento, idTipDoc, nom, apell, tel,
+        correo, pass, Nacimiento, direccion
     )
     VALUES (
-        p_idRol,p_documento, p_idTipoDoc, p_nom, p_apell, p_tel, p_correo, p_pass, p_nacimiento, p_direccion
+        p_idRol, p_documento, p_idTipoDoc, p_nom, p_apell, p_tel,
+        AES_ENCRYPT(p_correo, p_aes_key),
+        p_pass,
+        p_nacimiento,
+        AES_ENCRYPT(p_direccion, p_aes_key)
     );
 END$$
-
 DELIMITER ;
+
 
 -- PROCEDIMIENTO  4
 USE `proyecto_t`;
@@ -324,7 +329,8 @@ CREATE PROCEDURE actualizarInformacionUsuario(
     IN p_correo VARCHAR(255),
     IN p_pass VARCHAR(255),
     IN p_Nacimiento DATE,
-    IN p_direccion VARCHAR(255)
+    IN p_direccion VARCHAR(255),
+    IN p_aes_key VARBINARY(32) -- Nueva entrada
 )
 BEGIN
     UPDATE Usuario
@@ -332,10 +338,10 @@ BEGIN
         nom = p_nom,
         apell = p_apell,
         tel = p_tel,
-        correo = p_correo,
+        correo = AES_ENCRYPT(p_correo, p_aes_key),
         pass = p_pass,
         Nacimiento = p_Nacimiento,
-        direccion = p_direccion
+        direccion = AES_ENCRYPT(p_direccion, p_aes_key)
     WHERE documento = p_documento;
 END$$
 DELIMITER ;
@@ -387,28 +393,3 @@ DELIMITER ;
 call actualizarProducto (1,'patoloko','10000','asjdnaj');
 
 select * from producto;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
