@@ -15,16 +15,18 @@ CREATE TABLE TipDoc (
 );
 
 CREATE TABLE Usuario (
+    documento VARCHAR(15) PRIMARY KEY,
     idRol TINYINT(3),
-    documento VARCHAR(10)PRIMARY KEY,
     idTipDoc INT(10),
     nom VARCHAR(30),
     apell VARCHAR(30),
     tel BIGINT(10),
-    correo VARCHAR(255),
-    pass VARCHAR(255),
+    correo VARBINARY(512),     
+    pass VARCHAR(255),        
     Nacimiento DATE,
-    direccion VARCHAR(255)
+    direccion VARBINARY(512),
+    FOREIGN KEY (idRol) REFERENCES Rol(idRol),
+    FOREIGN KEY (idTipDoc) REFERENCES TipDoc(idTipDoc)
 );
 
 CREATE TABLE Categoria (
