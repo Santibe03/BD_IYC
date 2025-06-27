@@ -55,15 +55,3 @@ CALL insertarPedido(2, 1); -- mesa 2, estado 1
 -- Luego inserta un producto a ese pedido (sabiendo el ID):
 CALL insertarProductoPedido(8, 3, 2, 15000); -- pedido 1, producto 3, 2 unidades, $150
 
-
-
-
-
-
-
-
-
-
-
-
-
