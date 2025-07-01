@@ -20,57 +20,57 @@ INSERT INTO Usuario (
 ) VALUES
 (1, 1072340245, 1, 'Emiliano', 'Martinez', 3206466399,
  AES_ENCRYPT('ecurvitaeae-663@gmail.com', @aes_key),
- '$2b$10$Ejemplohash1', '2005-06-12',
+ '2SY9729aE@g', '2005-06-12',
  AES_ENCRYPT('Amabal Lorenzton Delacruz 5 - Shreveport, Ast / 48673', @aes_key)),
 
 (2, 1007234015, 1, 'Pedro', 'Gonzales', 3008686735,
  AES_ENCRYPT('johmtummeirma-848@gmail.com', @aes_key),
- '$2b$10$Ejemplohash2', '2004-11-17',
+ '2M94F_i~U@h', '2004-11-17',
  AES_ENCRYPT('Escalante Carlos s/n. - Plantation, Ast / 80459', @aes_key)),
 
 (2, 1053776140, 3, 'Cristiano', 'Ronaldo', 3345876699,
  AES_ENCRYPT('croporeefee-564@gmail.com', @aes_key),
- '$2b$10$Ejemplohash3', '2024-11-26',
+ 's0R0G02c7hAC', '2024-11-26',
  AES_ENCRYPT('Apartamento Oscar, 75 - Charleston, Gai / 45421', @aes_key)),
 
 (1, 75077205, 4, 'Mohamed', 'Salah', 3902826198,
  AES_ENCRYPT('jonluinfafio-756@gmail.com', @aes_key),
- '$2b$10$Ejemplohash4', '1988-07-17',
+ 'IYSk0jI@kM-sJ', '1988-07-17',
  AES_ENCRYPT('Terrenos Cesar Bustos, 10 - Honolulu, Leo / 02782', @aes_key)),
 
 (1, 1053817299, 4, 'James', 'Rodriguez', 3272962823,
  AES_ENCRYPT('seifaddeufalo-380@gmail.com', @aes_key),
- '$2b$10$Ejemplohash5', '1986-11-09',
+ '7s-99E0wO1DjP', '1986-11-09',
  AES_ENCRYPT('Colegio Reina 84 - Jackson, Com / 12497', @aes_key)),
 
 (1, 1053784128, 2, 'Kevin', 'Debruynr', 3206406479,
  AES_ENCRYPT('pneespejo-244@gmail.com', @aes_key),
- '$2b$10$Ejemplohash6', '1998-08-26',
+ 'QDZy"G3719b', '1998-08-26',
  AES_ENCRYPT('Bloque Cesar Tellez, 6 - Walnut Creek, Mur / 66860', @aes_key)),
 
 (1, 1007234235, 1, 'Ismael', 'Musala', 3446372442,
  AES_ENCRYPT('poopiettootro-961@gmail.com', @aes_key),
- '$2b$10$Ejemplohash7', '1993-03-06',
+ '828RH19qF91e', '1993-03-06',
  AES_ENCRYPT('Questa Carlos Pantoja, 27 - Greensboro, Man / 50555', @aes_key)),
 
 (1, 1053782428, 2, 'Wataru', 'Endo', 3477380648,
  AES_ENCRYPT('cofnagtissebrau-396@gmail.com', @aes_key),
- '$2b$10$Ejemplohash8', '1993-02-03',
+ 'HKY10178rO', '1993-02-03',
  AES_ENCRYPT('Extrrañao Tomas Lemms, 70 - Lauderdale, Rio / 07609', @aes_key)),
 
 (3, 1028031467, 3, 'Alisson', 'Becker', 3508189624,
  AES_ENCRYPT('imbequaiisou-310@gmail.com', @aes_key),
- '$2b$10$Ejemplohash9', '1995-06-13',
+ '8Kj6Y-2-5A@r', '1995-06-13',
  AES_ENCRYPT('Riera German Quiñones, 1 - Providence, Vas / 38744', @aes_key)),
 
 (1, 1053783940, 1, 'Tek', 'Sezeny', 3539892190,
  AES_ENCRYPT('unaiyeponi-200@gmail.com', @aes_key),
- '$2b$10$Ejemplohash10', '1981-12-16',
+ 'i41SQ21s1584', '1981-12-16',
  AES_ENCRYPT('Rua Jose Maria, 65 - Broomfield, Man / 20370', @aes_key)),
 
 (1, 1053775075, 1, 'Andrea', 'Pirlo', 3569798578,
  AES_ENCRYPT('cessaivoullelieu-117@gmail.com', @aes_key),
- '$2b$10$Ejemplohash11', '1995-12-26',
+ 'p6ijJvJv2_7', '1995-12-26',
  AES_ENCRYPT('Camino Raul s/n. - Burnsville, Manj / 13680', @aes_key));
 
 -- Inserting data into Categoria

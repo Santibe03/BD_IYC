@@ -409,6 +409,3 @@ select * from producto;
 
 
 
-
-
-
