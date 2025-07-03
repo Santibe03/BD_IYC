@@ -3,7 +3,7 @@
  CALL insert_rol('Administrador');
 
 -- PROCEDIMIENTO 2 
-CALL sp_insert_tipodoc('Cédula de ciudadanía');
+CALL sp_insert_tipodoc('C.c');
 
 -- PROCEDIMIENTO  3
 CALL insert_usuario(
@@ -37,7 +37,7 @@ CALL insertarProductoConInsumos(
 );
 
 -- PROCEDIMIENTO  8
-CALL insertarFactura('1007234015', '1053817299', '1986-11-09', 2);
+CALL insertarFactura('1007234015', '1053817299', '90000', 2);
 
 
 -- PROCEDIMIENTO  9

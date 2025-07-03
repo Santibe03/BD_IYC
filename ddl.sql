@@ -11,7 +11,7 @@ CREATE TABLE Rol (
 
 CREATE TABLE TipDoc (
     idTipDoc INT(10) AUTO_INCREMENT PRIMARY KEY,
-    numDoc INT(10)
+    numDoc varchar(10)
 );
 
 CREATE TABLE Usuario (

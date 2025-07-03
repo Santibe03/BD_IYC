@@ -50,7 +50,7 @@ DELIMITER ;
 
 
 
-SELECT estadoReservaPorCliente(3); -- Devuelve: 'Asignada', 'Cancelada', etc.
+SELECT estadoReservaPorCliente(1072340245);-- Devuelve: 'Asignada', 'Cancelada', etc.
 
 -- 3 stock de un insumo 
 DROP FUNCTION IF EXISTS infoInsumo;
@@ -110,7 +110,7 @@ BEGIN
 END$$
 DELIMITER ;
 
-select obtenerValorProducto();
+select obtenerValorProducto(1);
 
 -- 6 Función: Calcular Subtotal de Producto en Factura
 -- Calcula el subtotal para un producto específico basándose en su valor y la cantidad.
