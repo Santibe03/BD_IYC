@@ -112,6 +112,7 @@ DELIMITER ;
 
 select obtenerValorProducto(1);
 
+
 -- 6 Función: Calcular Subtotal de Producto en Factura
 -- Calcula el subtotal para un producto específico basándose en su valor y la cantidad.
 DROP FUNCTION IF EXISTS calcularSubtotalProductoFactura;
