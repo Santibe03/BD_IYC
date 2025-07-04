@@ -91,7 +91,7 @@ BEGIN
     RETURN v_documento;
 END$$
 DELIMITER ;
-select validarCredencialesUsuario();
+select validarCredencialesUsuario('croporeefee-564@gmail.com', 's0R0G02c7hAC');
 
 
 -- 5 Función: Obtener Valor de Producto
